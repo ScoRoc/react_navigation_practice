@@ -39,6 +39,13 @@ export default class MenuScreen extends Component {
             otherParam: 'anything you want here'
           })}
         />
+        <Button
+          title='Go to Details page'
+          onPress={() => this.props.navigation.navigate('Details', {
+            itemId: 86,
+            otherParam: 'anything you want here'
+          })}
+        />
       </View>
     );
   }
