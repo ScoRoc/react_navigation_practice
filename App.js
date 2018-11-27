@@ -5,10 +5,11 @@ import { createBottomTabNavigator, createStackNavigator, createAppContainer } fr
 import Home from './src/Home';
 import Details from './src/Details';
 import Details2 from './src/Details2';
+import Modal from './src/Modal';
 import Settings from './src/Settings';
 import Profile from './src/Profile';
 
-const RootStack = createStackNavigator(
+const MainStack = createStackNavigator(
   {
     Home,
     Details,
@@ -28,8 +29,24 @@ const RootStack = createStackNavigator(
     // navigationOptions: {
     //   tabBarLabel: 'Homey Home'
     // }
+
   }
 );
+
+const RootStack = createStackNavigator(
+  {
+    Main: {
+      screen: MainStack,
+    },
+    MyModal: {
+      screen: Modal
+    }
+  },
+  {
+    mode: 'modal',
+    headerMode: 'none'
+  }
+)
 
 // const Tabs = createBottomTabNavigator({
 //   Home,

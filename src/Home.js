@@ -6,9 +6,31 @@ import LogoTitle from './LogoTitle';
 
 class Home extends Component {
 
-  static navigationOptions = {
-    // title: 'Home'
-    headerTitle: <LogoTitle />
+  // static navigationOptions = {
+  //   title: 'Home'
+  // }
+
+  static navigationOptions = ({ navigation }) => {
+
+    return {
+      headerTitle: <LogoTitle />,
+      headerBackTitle: 'Homey',
+      // headerBackTitle: null,
+      headerRight: (
+        <Button
+          onPress={() => alert('This is a button!')}
+          title='Info'
+          color='#fff'
+        />
+      ),
+      headerLeft: (
+        <Button
+          onPress={() => navigation.navigate('MyModal')}
+          title='Modal'
+          color='#fff'
+        />
+      )
+    };
   }
 
   render() {

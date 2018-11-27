@@ -4,11 +4,35 @@ import { createBottomTabNavigator } from 'react-navigation';
 
 class Details extends Component {
 
+  state = {
+    count: 0
+  };
+
   static navigationOptions = ({ navigation }) => {
+    const params = navigation.state.params || {};
+
     return {
-      title: navigation.getParam('otherParam', 'navOps', 'A Nested Details Screen')
+      title: navigation.getParam('otherParam', 'navOps', 'A Nested Details Screen'),
+      headerRight: (
+        <Button
+          // this will cause a warning bc it loads before componentDidMount
+          // meaning that when it first loads, onPress is undefined
+          // but after componentDidMount runs, then it will work
+          onPress={navigation.getParam('increaseCount')}
+          title='add 1'
+          color='#fff'
+        />
+      )
     }
   };
+
+  _increaseCount = () => {
+    this.setState({ count: this.state.count +1 })
+  }
+
+  componentDidMount() {
+    this.props.navigation.setParams({ increaseCount: this._increaseCount });
+  }
 
   render() {
     const { navigation } = this.props;
@@ -19,6 +43,7 @@ class Details extends Component {
     return (
       <View style={styles.container}>
         <Text>Details Screen</Text>
+        <Text>count: {this.state.count}</Text>
         <Text>------------------</Text>
         <Text>itemId: {JSON.stringify(itemId)}</Text>
         <Text>otherParam: {JSON.stringify(otherParam)}</Text>

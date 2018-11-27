@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Button, StatusBar, StyleSheet, Text, View } from 'react-native';
 import { createBottomTabNavigator } from 'react-navigation';
 
+import GoHomeBtn from './GoHomeBtn';
+
 class Details2 extends Component {
 
   static navigationOptions = ({ navigation, navigationOptions }) => {
@@ -32,6 +34,8 @@ class Details2 extends Component {
         <Text>itemId: {params.itemId}</Text>
         <Text>otherParam: {params.otherParam}</Text>
 
+        <Text>------------------</Text>
+
         <Button
           title='Update the title'
           onPress={() => navigation.setParams({otherParam: 'Updated!'})}
@@ -39,14 +43,10 @@ class Details2 extends Component {
         <Text>------------------</Text>
 
         <Button
-          title='Go to Details page...again'
+          title='Go to Details2 page...again'
           onPress={() => this.props.navigation.push('Details2', {
             itemId: Math.floor(Math.random() * 100)
           })}
-        />
-        <Button
-          title='Go to Home'
-          onPress={() => this.props.navigation.navigate('Home')}
         />
         <Button
           title='Go back'
@@ -56,6 +56,10 @@ class Details2 extends Component {
           title='Pop to top....??'
           onPress={() => this.props.navigation.popToTop()}
         />
+
+        <Text>------------------</Text>
+        <GoHomeBtn />
+
       </View>
     )
   }
