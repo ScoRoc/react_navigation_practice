@@ -2,11 +2,16 @@ import React, { Component } from 'react';
 import { Button, StatusBar, StyleSheet, Text, View } from 'react-native';
 import { createBottomTabNavigator } from 'react-navigation';
 
-class Details extends Component {
+class Details2 extends Component {
 
-  static navigationOptions = ({ navigation }) => {
+  static navigationOptions = ({ navigation, navigationOptions }) => {
+    const { params } = navigation.state;
     return {
-      title: navigation.getParam('otherParam', 'navOps', 'A Nested Details Screen')
+      title: params ? params.otherParam : 'A Nested Details2 Screen',
+      headerStyle: {
+        backgroundColor: navigationOptions.headerTintColor
+      },
+      headerTintColor: navigationOptions.headerStyle.backgroundColor
     }
   };
 
@@ -18,7 +23,8 @@ class Details extends Component {
 
     return (
       <View style={styles.container}>
-        <Text>Details Screen</Text>
+        <StatusBar barStyle='dark-content' />
+        <Text>Details2 Screen</Text>
         <Text>------------------</Text>
         <Text>itemId: {JSON.stringify(itemId)}</Text>
         <Text>otherParam: {JSON.stringify(otherParam)}</Text>
@@ -34,7 +40,7 @@ class Details extends Component {
 
         <Button
           title='Go to Details page...again'
-          onPress={() => this.props.navigation.push('Details', {
+          onPress={() => this.props.navigation.push('Details2', {
             itemId: Math.floor(Math.random() * 100)
           })}
         />
@@ -63,4 +69,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Details;
+export default Details2;
