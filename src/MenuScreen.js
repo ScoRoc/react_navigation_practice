@@ -3,29 +3,17 @@ import { Button, StatusBar, StyleSheet, Text, View } from 'react-native';
 
 import LogoTitle from './LogoTitle';
 
-class Home extends Component {
-
-  // static navigationOptions = {
-  //   title: 'Home'
-  // }
+export default class MenuScreen extends Component {
 
   static navigationOptions = ({ navigation }) => {
 
     return {
       headerTitle: <LogoTitle />,
-      headerBackTitle: 'Homey',
-      // headerBackTitle: null,
+      headerBackTitle: 'Menu',
       headerRight: (
         <Button
-          onPress={() => alert('This is a button!')}
-          title='Info'
-          color='#fff'
-        />
-      ),
-      headerLeft: (
-        <Button
-          onPress={() => navigation.navigate('MyModal')}
-          title='Modal'
+          onPress={() => alert('This would sign you out or something!')}
+          title='alert something'
           color='#fff'
         />
       )
@@ -38,15 +26,15 @@ class Home extends Component {
         <StatusBar barStyle='light-content' />
         <Text>Here's the Home page</Text>
         <Button
-          title='Go to Details page'
-          onPress={() => this.props.navigation.navigate('Details', {
+          title='Go to Settings page'
+          onPress={() => this.props.navigation.navigate('Settings', {
             itemId: 86,
             otherParam: 'anything you want here'
           })}
         />
         <Button
-          title='Go to Details2 page'
-          onPress={() => this.props.navigation.navigate('Details2', {
+          title='Go to Profile page'
+          onPress={() => this.props.navigation.navigate('Profile', {
             itemId: 86,
             otherParam: 'anything you want here'
           })}
@@ -63,5 +51,3 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-
-export default Home;

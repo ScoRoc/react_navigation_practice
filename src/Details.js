@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Button, StatusBar, StyleSheet, Text, View } from 'react-native';
-import { createBottomTabNavigator } from 'react-navigation';
 
 class Details extends Component {
 
