@@ -18,6 +18,7 @@ import OtherScreen from './src/OtherScreen';
 import AnotherScreen from './src/AnotherScreen';
 import MoreScreen from './src/MoreScreen';
 
+// can move nav funcs into their own file/foler for organization
 const MainStack = createStackNavigator(
   {
     Home,
